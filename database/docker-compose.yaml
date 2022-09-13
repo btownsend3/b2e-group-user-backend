@@ -1,0 +1,16 @@
+version: '3'
+# Section for defining your containers
+services:
+  database:
+    # The prebuilt container we want to use
+    image: 'postgres:latest'
+    # connects the container to the outside world
+    ports:
+      - "5432:5432"
+    # tell the container durning setup how to configure its self
+    environment:
+      POSTGRES_USER: username
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: postgres
+    volumes:
+      - ./data:/var/lib/postgresql/data
