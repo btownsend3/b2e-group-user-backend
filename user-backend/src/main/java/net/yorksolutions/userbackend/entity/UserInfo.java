@@ -44,6 +44,46 @@ public class UserInfo {
 
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public List<String> getPermissions() {
+        return permissions;
+    }
+
+    public void setPermissions(List<String> permissions) {
+        this.permissions = permissions;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public List<HashMap> getGrades() {
+        return grades;
+    }
+
+    public void setGrades(List<HashMap> grades) {
+        this.grades = grades;
+    }
+
     public UUID getId(){
         return this.id;
     }

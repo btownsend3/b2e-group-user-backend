@@ -9,6 +9,7 @@ import java.util.*;
 public class UserController {
 
     private final UserService userService;
+
     public UserController(@NonNull UserService userService) {
         this.userService = userService;
     }
@@ -17,10 +18,12 @@ public class UserController {
     public String hello() {
         return "Hello World";
     }
+
     @GetMapping("/login")
     public UUID login(@RequestParam String username, @RequestParam String password) {
         return this.userService.login(username, password);
     }
+
     @GetMapping("/logout")
     public void logout(@RequestParam UUID token) {
         this.userService.logout(token);
