@@ -28,7 +28,7 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public UUID login(@RequestParam String username, @RequestParam String password) {
+    public HashMap login(@RequestParam String username, @RequestParam String password) {
         return this.userService.login(username, password);
     }
 

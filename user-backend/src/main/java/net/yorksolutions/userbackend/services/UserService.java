@@ -47,14 +47,17 @@ public class UserService {
         }
     }
 
-    public UUID login(String username, String password) {
+    public HashMap login(String username, String password) {
         Optional<UserInfo> userData = this.userInfoRepo.findByUsernameAndPassword(username, password);
         if (userData.isEmpty())
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "User not found");
         UUID token = UUID.randomUUID();
         UserInfo user = userData.get();
         this.tokenMap.put(token, user.getId());
-        return token;
+        HashMap data = new HashMap<>();
+        data.put("token", token);
+        data.put("role", user.getRole());
+        return data;
     }
 
     public void logout(UUID token) {
