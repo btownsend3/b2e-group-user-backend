@@ -31,7 +31,11 @@ public class UserService {
     }
 
     public Boolean checkAuth(UUID token, String role) {
-        Optional<UserInfo> user = userInfoRepo.findById(tokenMap.get(token));
+        Optional<UUID> id = Optional.ofNullable(tokenMap.get(token));
+        if(id.isEmpty()){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"token not on tokenmap");
+        }
+        Optional<UserInfo> user = userInfoRepo.findById(id.get());
         if (user.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         } else {
