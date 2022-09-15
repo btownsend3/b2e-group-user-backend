@@ -39,9 +39,9 @@ public class UserController {
 
     @GetMapping("/admin-create")
     public void create(@RequestParam UUID token, @RequestParam String username, @RequestParam String password, @RequestParam String role) {
-        if (!this.userService.checkAuth(token, "admin")){
+        if (!this.userService.checkAuth(token, "admin")) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "You are not an admin");
-        }else {
+        } else {
             this.userService.adminCreate(username, password, role);
         }
     }
@@ -51,6 +51,13 @@ public class UserController {
 //        if(!this.userService.checkAuth())
 //            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "You are not and admin");
         this.userService.create(username, password);
+    }
+
+    @GetMapping("/get-users")
+    public Iterable<UserInfo> getUsers(){
+//        if(!this.userService.checkAuth())
+//           throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "You are not and admin");
+        return this.userService.getUsers();
     }
 
     @PostMapping("/edit")
@@ -67,11 +74,14 @@ public class UserController {
         this.userService.delete(token);
     }
 
-//    @GetMapping("/checkAuth/{token}")
-//    public Boolean checkAuth(UUID token){
+    @GetMapping("/checkAuth/{token}")
+    public Boolean checkAuth(UUID token) {
+    return userService.checkAuth(token,"admin");
+    }
+}
 //        if(!tokenMap.containsKey(token)){
 //            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 //        }
 //        return new ResponseEntity<>(HttpStatus.OK);
 //    }
-}
+

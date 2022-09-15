@@ -75,6 +75,9 @@ public class UserService {
             this.userInfoRepo.save(userInfo);
         }
     }
+    public Iterable<UserInfo> getUsers(){
+        return userInfoRepo.findAll();
+    }
 
     public void adminCreate(String username, String password,String role) {
         if (userInfoRepo.existsByUsername(username)) {
