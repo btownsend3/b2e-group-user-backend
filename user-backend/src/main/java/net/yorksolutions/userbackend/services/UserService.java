@@ -93,8 +93,8 @@ public class UserService {
             this.userInfoRepo.save(userInfo);
         }
 
-        public void delete (UUID id){
-            Optional<UserInfo> user = this.userInfoRepo.findById(id);
+        public void delete (String username){
+            Optional<UserInfo> user = this.userInfoRepo.findByUsername(username);
             if (user.isEmpty())
                 throw new ResponseStatusException(HttpStatus.GONE, "Id does not exist");
             this.userInfoRepo.delete(user.get());

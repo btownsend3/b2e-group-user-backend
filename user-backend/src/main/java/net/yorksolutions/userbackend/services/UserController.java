@@ -67,11 +67,11 @@ public class UserController {
         this.userService.edit(userInfo);
     }
 
-    @DeleteMapping("/delete")
-    public void delete(@RequestParam UUID token) {
-        if (!this.userService.checkAuth(token, "admin"))
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "You are not and admin");
-        this.userService.delete(token);
+    @GetMapping("/delete")
+    public void delete(@RequestParam UUID token, @RequestParam String username) {
+//        if (!this.userService.checkAuth(token, "admin"))
+//            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "You are not and admin");
+        this.userService.delete(username);
     }
 
     @GetMapping("/checkAuth/{token}")
