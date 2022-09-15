@@ -3,6 +3,7 @@ package net.yorksolutions.userbackend.entity;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
@@ -26,8 +27,9 @@ public class UserInfo {
     @JsonProperty
     String role;
 
-//    @OneToMany
-//    List<HashMap> assignments;
+    @ElementCollection
+    @JsonProperty
+    List<HashMap> assignments;
 
     @JsonProperty
     @ElementCollection
@@ -41,7 +43,7 @@ public class UserInfo {
         this.password = password;
         this.permissions = permissions;
         this.role = role;
-
+        this.assignments =  new ArrayList<>();
     }
 
     public String getUsername() {
