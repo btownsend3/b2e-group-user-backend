@@ -62,8 +62,8 @@ public class UserController {
 
     @PostMapping("/edit")
     public void edit(@RequestParam UUID token, @RequestBody UserInfo userInfo) {
-        if (!this.userService.checkAuth(token, "admin"))
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "You are not and admin");
+//        if (!this.userService.checkAuth(token, "admin"))
+//            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "You are not and admin");
         this.userService.edit(userInfo);
     }
 
