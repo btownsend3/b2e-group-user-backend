@@ -57,6 +57,7 @@ public class UserService {
         HashMap data = new HashMap<>();
         data.put("token", token);
         data.put("role", user.getRole());
+        data.put("assignments", user.getAssignments());
         return data;
     }
 

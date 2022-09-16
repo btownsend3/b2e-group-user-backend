@@ -86,6 +86,10 @@ public class UserInfo {
         this.grades = grades;
     }
 
+    public List<HashMap> getAssignments() {
+        return assignments;
+    }
+
     public UUID getId(){
         return this.id;
     }
